@@ -19,7 +19,7 @@ after_success:
 
 # take images and push them to docker hub 
 # login to the docker CLI 
-  - echo "$DOCKER_PASSOWRD" | docker login -u "$DOCKER_ID" --password-stdin 
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
   - docker push mohammad/multi-worker
   - docker push mohammad/multi-server
   - docker push mohammad/multi-client
