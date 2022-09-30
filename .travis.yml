@@ -5,27 +5,21 @@ services:
   - docker 
 
 before_install: 
-  - docker build -t mohammad/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t mohammad18p/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true mohammad/react-test npm test 
+  - docker run -e CI=true mohammad18p/react-test npm test 
 
 after_success:
-  - docker build -t mohammad/multi-client ./client 
-  - docker build -t mohammad/multi-nginx ./nginx 
-  - docker build -t mohammad/multi-server ./server
-  - docker build -t mohammad/multi-worker ./worker 
+  - docker build -t mohammad18p/multi-client ./client 
+  - docker build -t mohammad18p/multi-nginx ./nginx 
+  - docker build -t mohammad18p/multi-server ./server
+  - docker build -t mohammad18p/multi-worker ./worker
 
-
-  - docker tag multi-client mohammad/multi-client
-  - docker tag multi-nginx mohammad/multi-nginx
-  - docker tag multi-server mohammad/multi-server
-  - docker tag multi-worker mohammad/multi-worker
-  
 # take images and push them to docker hub 
 # login to the docker CLI 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
-  - docker push mohammad/multi-worker
-  - docker push mohammad/multi-server
-  - docker push mohammad/multi-client
-  - docker push mohammad/multi-nginx
+  - docker push mohammad18p/multi-worker
+  - docker push mohammad18p/multi-server
+  - docker push mohammad18p/multi-client
+  - docker push mohammad18p/multi-nginx
