@@ -17,6 +17,11 @@ after_success:
   - docker build -t mohammad/multi-worker ./worker 
 
 
+  - docker tag multi-client mohammad/multi-client
+  - docker tag multi-nginx mohammad/multi-nginx
+  - docker tag multi-server mohammad/multi-server
+  - docker tag multi-worker mohammad/multi-worker
+  
 # take images and push them to docker hub 
 # login to the docker CLI 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
